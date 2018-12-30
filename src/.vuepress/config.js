@@ -1,13 +1,27 @@
 module.exports = {
-  title: 'Tomoki Nakama Blog',
+  title: 'Blog',
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
+    ['meta',{ name:"keywords", content:"key, words, vuepress"}],
+    ['meta',{ name:"og:title", content:"og title"}],
+    ['meta',{ name:"og:description", content:"description"}],
+    ['meta',{ name:"og:type", content:"website"}],
+    ['meta',{ name:"og:url", content:"og　url"}]
   ],
   locales: {
     '/': {
-      lang: 'ja'
+      lang: 'ja',
+      title: 'VuePress Blog',
+      description: 'VuePress Blog',
     }
   },
+  plugins: [
+    '@vuepress/last-updated'
+  ],
+    // '@vuepress/google-analytics': {
+    //   ga: 'UA-12345678-9'
+    // },
+  // },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -25,10 +39,6 @@ module.exports = {
           '/blog/',
           '/blog/20181206'
         ]
-      },
-      {
-        title: 'Group 2',
-        children: [ /* ... */ ]
       }
     ]
   }

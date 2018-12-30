@@ -1,13 +1,12 @@
 ## Blog Made by VuePress
 ====
 
-This repository is heavily under development and unstable. See below milestone.
 
 ## Description
 
 
 ## Requirement
-node 8.11.2
+node 8.11.2  
 npm 6.4.1
 
 ## Usage
@@ -25,4 +24,4 @@ $ npm install
 ```
 ## Author
 
-[hamutomo](https://github.com/hamutomo)
+[tomopict](https://github.com/tomopict)
