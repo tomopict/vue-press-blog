@@ -5,21 +5,16 @@ meta:
 - name: keywords
   content: VuePress netlify
 - name: desciption
-  content: VuePressとnetlifyでblogを作成する
+  content: VuePressとnetlifyで手軽にサイト構築
 - og:title: 'VuePressとnetlifyでblogをはじめる'
-- og:desciption: 'VuePressとnetlifyでblogを作成する'
-- og:image: './thisog.jpg'
+- og:desciption: 'VuePressとnetlifyで手軽にサイト構築'
 ---
 
-# VuePressとnetlifyでお手軽blogはじめ
+# VuePressとnetlifyで手軽にサイト構築
 
-年初にやりたいことをリストアップしていて、  
-定期的なアウトプットというのもその中に入っていました。  
-
-blogという形態にこだわる必要もないんですが、  
-せっかくなら自分で一から作って見ようということで  
-今回VuePressという静的サイトジェネレーターを使って  
-blog(今は機能的にはモドキ)を作った際の話をしたいと思います。
+年初にやりたいことをリストアップしていて、定期的なアウトプットというのもその中に入っていました。  
+それが気づいたらもうど年末(これを書いているのは2018年12月31日)。  
+アウトプットするのにblogという形態にこだわる必要もないんですが、せっかくなら自分で一から作って見ようということで、今回VuePressという静的サイトジェネレーターを使って、blog(今は機能的にはモドキ)を作った際の話をしたいと思います。
 
 以下簡単に目次
 
@@ -29,18 +24,15 @@ blog(今は機能的にはモドキ)を作った際の話をしたいと思い�
 
 ## なぜVuePressなのか
 
-こういうのって結局やりたいときに一気にどこまで進められるか  
-初速が大きいと思っていて、その意味でも今自分が持っているスキルセットで  
-実装しやすいものという観点で調べて行きました。
+こういうのって結局やりたいときに一気にどこまで進められるか初速が大きいと思っていて、その意味でも今自分が持っているスキルセットで実装しやすいものという観点で調べて行きました。
 
 Qiitaなどで、VuePressという名前を見かけて  
 Vueは業務でも使っているしこれならサクッといけるんじゃないかと思って選択をしました。  
-  
+
 何よりまだ新しいサービス(今回入れたのは`Ver1.0.0-alpha.29`)  
-に手を出すのはいつの世も楽しい(勿論辛さもある)
+に手を出すのはいつの世も楽しい(勿論辛みもある)
 
 ## インストールから初回立ち上げ
-
 今回はglobalではなくてlocalにインストールします。  
 ディレクトリを作成して、サクッとインストール。
 
@@ -62,20 +54,20 @@ yarn add -D VuePress@next
 
 ### npm run dev まで
 
-srcディレクトリを追加して、直下にREADME.mdと.VuePressディレクトリを作成し、    
-さらに.VuePressディレクトリの中にconfig.jsを追加しておきます。  
+srcディレクトリを追加して、直下にREADME.mdと.vuepressディレクトリを作成し、    
+さらに.vuepressディレクトリの中にconfig.jsを追加しておきます。  
 
-
-``` ci
-mkdir source
+``` sh
+mkdir src
+mkdir .vuepress
 touch README.md
-mkdir .VuePress
-cd .VuePress
+cd .vuepress
 touch config.js
 ```
 
-README.md
-```md {README.md}
+srcディレクトリの直下には`README.md`を作成して以下を記載しておきます。
+
+```md
 # Hello VuePress
 ```
 
@@ -86,8 +78,7 @@ module.exports = {
 }
 ```
 
-公式だとdocディレクトリ内にコンテンツを置いているんですが   
-今回はsrcファイル内にコンテンツを書いていく想定なので`package.json`内に以下を記載します。
+公式だとdocディレクトリ内にコンテンツを置いていますが、今回はsrcファイル内にコンテンツを書いていく想定なので`package.json`内に以下を記載します。
 
 ``` json
 {
@@ -126,18 +117,17 @@ vue-press-blog
 
 ```
 
-## config.jsによる初期設定
+## 初期設定
 ### config.jsについて
-他の記事でも言及されていますが、  
-VuePressにおいて`config.js`はかなり重要なファイルです。  
-色々なことがこのファイルで設定できるんですが、ある程度ニーズに絞ってに変更していきます。
+他の記事でも言及されていますが、VuePressにおいて`config.js`はかなり重要なファイルです。
+多くのことがこのファイルで設定できますが、今回は最低限の部分設定していきます。
 
-リファレンスはここを[参照](https://VuePress.vuejs.org/guide/basic-config.html)
+リファレンスはここを[参照](https://VuePress.vuejs.org/guide/basic-config.html)してください。
 
 ### metaの設定
-meta情報を変更したい場合もここに設定します。  
-方法はheadのなかに配列を記載していくだけ。  
-metaネームと実際に入れる内容に関してはobjectで指定していきます。  
+meta情報を変更したい場合はheadのなかに配列を記載していくだけ。  
+metaネームと実際に入れる内容に関してはobjectで指定していきます。
+
 ``` js
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
@@ -150,7 +140,7 @@ metaネームと実際に入れる内容に関してはobjectで指定してい�
 ```
 
 各ページごとに設定する場合は各記事の頭に以下の記法で記載します。
-公式のドキュメントは[こちら](https://vuepress.vuejs.org/guide/frontmatter.html#alternative-front-matter-formats)を参照
+公式のドキュメントは[こちら](https://vuepress.vuejs.org/guide/frontmatter.html#alternative-front-matter-formats)を参照してください。
 
 ``` md
 ---
@@ -174,8 +164,8 @@ faviconもheadの中に該当のファイルへのパスを記載します。
 言語ごとにmetaデータを変更したり、プラグインの設定などもconfig.jsに設定を書くのが基本になってきます。  
 サイドバーやヘッダのナビゲーションもここに書いていきます。
 
-## 調整や機能
-### 色変更
+## 各機能など
+### 色の変更
 そのままでも使えますがdefaultはvueで使用されているカラーが基調になっているので、変更したい場合は`.VuePress/styles/palette.styl`にstylファイルを置いておけばOKです。
 
 ::: warning
@@ -183,10 +173,10 @@ faviconもheadの中に該当のファイルへのパスを記載します。
 `.VuePress/override.styl` → `.VuePress/styles/palette.styl`  
 :::
 
-### markdownの機能に関して
+### markdown
 基本的な記事に関してはmarkdownで書いていく形になります。markdownの記法はあらかた使えるので、[こちら](https://VuePress.vuejs.org/guide/markdown.html#links)を参照して記載していきます。
 
-## vueの記法を使う
+## vueの記法
 
 公式のドキュメントを見ると以下のような記載があります。
 
@@ -236,10 +226,10 @@ vueファイルとして普通に書けば動くので結構便利ですね。
 #### プリプロセッサやテンプレートに関して
 もちろんscssやpugなども使えます。
 
-``` ci
+``` sh
 yarn add -D sass-loader node-sass
 ```
-``` ci
+``` sh
 yarn add -D pug pug-plain-loader
 ```
 ``` css

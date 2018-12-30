@@ -11,7 +11,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'ja',
-      title: 'VuePress Blog',
+      title: 'tomopict Blog',
       description: 'VuePress Blog',
     }
   },
@@ -36,8 +36,7 @@ module.exports = {
       {
         title: 'Blog',
         children: [
-          '/blog/',
-          '/blog/20181206'
+          '/blog/'
         ]
       }
     ]
