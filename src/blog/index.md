@@ -5,18 +5,17 @@ meta:
 - name: keywords
   content: VuePress netlify
 - name: desciption
-  content: VuePressとnetlifyで手軽にサイト構築
+  content: VuePressとnetlifyで手軽にblog
 - og:title: 'VuePressとnetlifyでblogをはじめる'
-- og:desciption: 'VuePressとnetlifyで手軽にサイト構築'
+- og:desciption: 'VuePressとnetlifyで手軽にblog'
 ---
 
-# VuePressとnetlifyで手軽にサイト構築
+# VuePressとnetlifyで手軽にblog
+
 ## はじめに
 年初にやりたいことをリストアップしていて、定期的なアウトプットというのもその中に入っていました。  
 それが気づいたらもうど年末(これを書いているのは2018年12月31日)。  
-アウトプットするのに自前のblogという形態にこだわる必要もないんですが、せっかくなら自分で一から作って見ようということで、今回VuePressという静的サイトジェネレーターを使って、blog(今は機能的にはモドキ)を作った際の話をしたいと思います。
-
-以下簡単に目次
+アウトプットするのに自前のblogという形態にこだわる必要もないんですが、せっかくなら自分で一から作って見ようということで、今回VuePressという静的サイトジェネレーターを使って、blog(今は機能的にはモドキ)を作っていきます。
 
 **目次**
 
@@ -44,18 +43,24 @@ cd vue-press-blog
 npm init
 yarn add -D vuepress
 ```
+
 今回は1系を入れてやりたいので以下のように変更します。
 
 ``` sh
 yarn add -D vuepress
 ↓
-yarn add -D VuePress@next
+yarn add -D vuepress@next
 ```
 
-### npm run dev まで
+::: warning
+まだ1系に関してはbeta版ですが、公式のドキュメントが既に1系に準拠しているので、今回は1系を導入しています。
+:::
 
-srcディレクトリを追加して、直下にREADME.mdと.vuepressディレクトリを作成し、    
-さらに.vuepressディレクトリの中にconfig.jsを追加しておきます。  
+
+### 初回立ち上げまで
+
+`src`ディレクトリを追加して、直下に`README.md`と`.vuepress`ディレクトリを作成し、    
+さらに`.vuepress`ディレクトリの中に`config.js`を追加しておきます。  
 
 ``` sh
 mkdir src
@@ -65,12 +70,13 @@ cd .vuepress
 touch config.js
 ```
 
-srcディレクトリの直下には`README.md`を作成して以下を記載しておきます。
+`src`ディレクトリの直下の`README.md`には以下を記載しておきます。
 
 ```md
 # Hello VuePress
 ```
 
+`config.js`には以下を記載しておきます。
 config.js
 ```js
 module.exports = {
@@ -78,7 +84,7 @@ module.exports = {
 }
 ```
 
-公式だとdocディレクトリ内にコンテンツを置いていますが、今回はsrcファイル内にコンテンツを書いていく想定なので`package.json`内に以下を記載します。
+公式だと`doc`ディレクトリ内にコンテンツを置いていますが、今回は`src`ファイル内にコンテンツを書いていく想定なので`package.json`内に以下を記載します。
 
 ``` json
 {
@@ -94,15 +100,13 @@ module.exports = {
 yarn dev
 ```
 
-うまくいっていれば`http://localhost:8080`で今の状態を見れるはずです。
-headerに`Hello World!`、コンテンツ内に`Hello VuePress`とあれば成功です。
+うまくいっていれば`http://localhost:8080`で今の状態を見れるはずです。headerに`Hello World!`、コンテンツ内に`Hello VuePress`とあれば成功です。
 
 
 ### ディレクトリ構成
 
 ここで現在の構成の確認。  
-デフォルトのテーマが読み込まれていて、  
-カスタムする部分に関しては基本的に.VuePressディレクトリ内部に書いていく構成。
+この時点ではデフォルトのテーマが読み込まれています。カスタムする部分に関しては基本的に`.vuepress`ディレクトリ内部にファイルを追加していく構成です。
 
 参考：[https://VuePress.vuejs.org/guide/directory-structure.html#default-page-routing](https://VuePress.vuejs.org/guide/directory-structure.html#default-page-routing)
 
@@ -112,7 +116,7 @@ vue-press-blog
 ├─ package.json
 └─ src
     ├─ README.md  
-    └─ .VuePress
+    └─ .vuepress
        └─ config.js
 
 ```
@@ -125,13 +129,13 @@ vue-press-blog
 リファレンスはここを[参照](https://VuePress.vuejs.org/guide/basic-config.html)してください。
 
 ### metaの設定
-meta情報を変更したい場合はheadのなかに配列を記載していくだけ。  
+meta情報を変更したい場合はheadのなかに配列を記載していくだけです。  
 metaネームと実際に入れる内容に関してはobjectで指定していきます。
 
 ``` js
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
-    ['meta',{ name:"keywords", content:"key, words, vuepress"}],
+    ['meta',{ name:"keywords", content:"vuepress, netlify"}],
     ['meta',{ name:"og:title", content:"og title"}],
     ['meta',{ name:"og:description", content:"description"}],
     ['meta',{ name:"og:type", content:"website"}],
@@ -139,7 +143,7 @@ metaネームと実際に入れる内容に関してはobjectで指定してい�
   ]
 ```
 
-各ページごとに設定する場合は各記事の頭に以下の記法で記載します。
+各ページごとに設定する場合は各記事の頭に以下の記法で記載します。  
 公式のドキュメントは[こちら](https://vuepress.vuejs.org/guide/frontmatter.html#alternative-front-matter-formats)を参照してください。
 
 ``` md
@@ -148,20 +152,20 @@ title: Top Pageだけ別
 description: Top description
 meta:
  -
-  og:title: 'VuePress_test top'
+  og:title: 'vuepress_test top'
  -
-  og:desciption: 'VuePress_test test description'
+  og:desciption: 'vuepress_test test description'
  -
-  og:image: 'VuePress_test_top.png'
+  og:image: 'vuepress_test_top.png'
  ---
 ```
 
 ### favicon
 faviconもheadの中に該当のファイルへのパスを記載します。  
-実際のガイルはsrc/.vuepewss/publicディレクトリに画像ファイルをおけばOKです。  
+実際のファイルは`src/.vuepewss/public`ディレクトリに画像ファイルをおけばOKです。  
 
 ### その他
-言語ごとにmetaデータを変更したり、プラグインの設定などもconfig.jsに設定を書くのが基本になってきます。  
+言語ごとにmetaデータを変更したり、プラグインの設定なども`config.js`に設定を書くのが基本になってきます。  
 サイドバーやヘッダのナビゲーションもここに書いていきます。
 
 ## 各機能など
@@ -174,7 +178,7 @@ faviconもheadの中に該当のファイルへのパスを記載します。
 :::
 
 ### markdown
-基本的な記事に関してはmarkdownで書いていく形になります。markdownの記法はあらかた使えるので、[こちら](https://VuePress.vuejs.org/guide/markdown.html#links)を参照して記載していきます。
+基本的な記事に関してはmarkdownで書いていく形になります。markdownの記法はあらかた使えるので、[こちら](https://VuePress.vuejs.org/guide/markdown.html#links)を参照して書いていきます。
 
 ## vueの記法
 
@@ -239,7 +243,7 @@ yarn add -D pug pug-plain-loader
 </style>
 ```
 #### GAの設定
-記事がどれくらい読まれているのかやはり確認しておきたいので、GAを入れておきます。
+記事がどれくらい読まれているのか確認しておきたいので、GAを入れておきます。
 
 ``` json
 plugins: {
