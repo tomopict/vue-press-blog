@@ -1,5 +1,5 @@
-# top
+# blog top
 
-<span v-for="page in $site.pages">[{{page.title}}]({{page.path}})<br></span>
++ [About](./about/)
 + [VuePressとnetlifyでお手軽blogはじめ](./blog/)
 
