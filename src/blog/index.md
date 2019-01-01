@@ -4,10 +4,10 @@ tags: ['VuePress','netlify']
 meta:
 - name: keywords
   content: VuePress netlify
-- name: desciption
+- name: description
   content: VuePressとnetlifyで手軽にblogをはじめる
 - og:title: 'VuePressとnetlifyでblogをはじめる'
-- og:desciption: 'VuePressとnetlifyで手軽にblogをはじめる'
+- og:description: 'VuePressとnetlifyで手軽にblogをはじめる'
 ---
 
 # VuePressとnetlifyで手軽にblogをはじめる
@@ -150,7 +150,7 @@ meta:
  -
   og:title: 'vuepress_test top'
  -
-  og:desciption: 'vuepress_test test description'
+  og:description: 'vuepress_test test description'
  -
   og:image: 'vuepress_test_top.png'
  ---
