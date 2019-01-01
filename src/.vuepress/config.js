@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Blog',
+  title: 'tomo blog',
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
     ['meta',{ name:"keywords", content:"key, words, vuepress"}],
@@ -11,7 +11,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'ja',
-      title: 'tomopict Blog',
+      title: 'tomo blog',
       description: 'VuePress Blog',
     }
   },
