@@ -15,13 +15,14 @@ module.exports = {
       description: 'VuePress Blog',
     }
   },
-  plugins: [
-    '@vuepress/last-updated'
-  ],
-    // '@vuepress/google-analytics': {
-    //   ga: 'UA-12345678-9'
-    // },
-  // },
+  // plugins: [
+  //   '@vuepress/last-updated'
+  // ],
+  plugins: {
+    '@vuepress/google-analytics': {
+      ga: 'UA-131752322-1'
+    },
+  },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -36,7 +37,8 @@ module.exports = {
       {
         title: 'Blog',
         children: [
-          '/blog/'
+          '/blog/',
+          '/blog/20190105'
         ]
       }
     ]
