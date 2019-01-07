@@ -37,7 +37,7 @@ module.exports = {
       {
         title: 'Blog',
         children: [
-          '/blog/',
+          '/blog/20181231',
           '/blog/20190105'
         ]
       }
