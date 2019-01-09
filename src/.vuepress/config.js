@@ -15,14 +15,14 @@ module.exports = {
       description: 'VuePress Blog',
     }
   },
-  // plugins: [
-  //   '@vuepress/last-updated'
-  // ],
-  plugins: {
-    '@vuepress/google-analytics': {
-      ga: 'UA-131752322-1'
-    },
-  },
+  plugins: [
+    '@vuepress/blog'
+  ],
+  // plugins: {
+  //   '@vuepress/google-analytics': {
+  //     ga: 'UA-131752322-1'
+  //   },
+  // },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }

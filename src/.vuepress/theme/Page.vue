@@ -68,20 +68,6 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
-    // 新規メソッド
-    sortedPosts() {
-      return this.$site.pages
-          // blogディレクトリ以下のページを次へ前へリンク自動生成
-          .filter(post => post.path.startsWith('/blog/'))
-          // dateに設定した日付の降順にソートする
-          .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
-    },
-    // 新規メソッド
-    pageIdx() {
-      return this.sortedPosts
-          .findIndex(page => page.path == this.$page.path)
-    },
-
     lastUpdated () {
       if (this.$page.lastUpdated) {
         return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
@@ -98,30 +84,21 @@ export default {
       return 'Last Updated'
     },
 
-    // 既存のprev()メソッドに上書きしてください
     prev () {
       const prev = this.$page.frontmatter.prev
       if (prev === false) {
         return
-      } else if (typeof prev === "undefined" && this.pageIdx > 0) {
-        const prevPath = this.sortedPosts[this.pageIdx - 1].path
-        return resolvePage(this.$site.pages, prevPath, this.$route.path)
       } else if (prev) {
         return resolvePage(this.$site.pages, prev, this.$route.path)
       } else {
         return resolvePrev(this.$page, this.sidebarItems)
       }
     },
- 
-    // 既存のnext()メソッドに上書きしてください
+
     next () {
       const next = this.$page.frontmatter.next
       if (next === false) {
         return
-        // 最後より一つ前のページまで次へリンクを生成する
-      } else if (typeof next === "undefined" && this.pageIdx < this.sortedPosts.length - 1) {
-        const nextPath = this.sortedPosts[this.pageIdx + 1].path
-        return resolvePage(this.$site.pages, nextPath, this.$route.path)
       } else if (next) {
         return resolvePage(this.$site.pages, next, this.$route.path)
       } else {
