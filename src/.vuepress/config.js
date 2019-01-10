@@ -16,22 +16,21 @@ module.exports = {
     }
   },
   plugins: [
-    '@vuepress/blog'
+    [
+      '@vuepress/google-analytics',
+      { ga: 'UA-131752322-1' }
+    ],
+    '@vuepress/blog',
   ],
-  // plugins: {
-  //   '@vuepress/google-analytics': {
-  //     ga: 'UA-131752322-1'
-  //   },
-  // },
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'About', link: '/about/' },
-      { text: 'Blog', link: '/blog/' }
+      {type: 'link', text: 'Home', link: '/' },
+      {type: 'link', text: 'twitter', link: 'https://twitter.com/tomopict' },
+      {type: 'link', text: 'github', link: 'https://github.com/tomopict' }
     ],
     sidebar: [
       {
