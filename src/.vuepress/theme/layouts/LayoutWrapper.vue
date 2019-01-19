@@ -59,23 +59,20 @@
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-import Home from './Home.vue'
-import Navbar from './Navbar.vue'
-import Page from './Page.vue'
-import Sidebar from './Sidebar.vue'
-import SWUpdatePopup from './SWUpdatePopup.vue'
-import { resolveSidebarItems } from './util'
-
+import Home from '../components/Home.vue'
+import Navbar from '../components/Navbar.vue'
+import Page from '../components/Page.vue'
+import Sidebar from '../components/Sidebar.vue'
+import SWUpdatePopup from '../components/SWUpdatePopup.vue'
+import { resolveSidebarItems } from '../util'
 export default {
   components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
-
   data () {
     return {
       isSidebarOpen: false,
       swUpdateEvent: null
     }
   },
-
   computed: {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
@@ -93,7 +90,6 @@ export default {
         this.$themeLocaleConfig.nav
       )
     },
-
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
@@ -103,7 +99,6 @@ export default {
         this.sidebarItems.length
       )
     },
-
     sidebarItems () {
       return resolveSidebarItems(
         this.$page,
@@ -112,7 +107,6 @@ export default {
         this.$localePath
       )
     },
-
     pageClasses () {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
@@ -125,33 +119,26 @@ export default {
       ]
     }
   },
-
   mounted () {
     window.addEventListener('scroll', this.onScroll)
-
     // configure progress bar
     nprogress.configure({ showSpinner: false })
-
     this.$router.beforeEach((to, from, next) => {
       if (to.path !== from.path && !Vue.component(to.name)) {
         nprogress.start()
       }
       next()
     })
-
     this.$router.afterEach(() => {
       nprogress.done()
       this.isSidebarOpen = false
     })
-
     this.$on('sw-updated', this.onSWUpdated)
   },
-
   methods: {
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
     },
-
     // side swipe
     onTouchStart (e) {
       this.touchStart = {
@@ -159,7 +146,6 @@ export default {
         y: e.changedTouches[0].clientY
       }
     },
-
     onTouchEnd (e) {
       const dx = e.changedTouches[0].clientX - this.touchStart.x
       const dy = e.changedTouches[0].clientY - this.touchStart.y
@@ -171,7 +157,6 @@ export default {
         }
       }
     },
-
     onSWUpdated (e) {
       this.swUpdateEvent = e
     }
@@ -180,4 +165,4 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./styles/theme.styl" lang="stylus"></style>
+<style src="../styles/theme.styl" lang="stylus"></style>

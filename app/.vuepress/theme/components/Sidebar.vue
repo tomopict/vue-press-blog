@@ -22,7 +22,7 @@
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink from './SidebarLink.vue'
-import NavLinks from './NavLinks.vue'
+import NavLinks from '../components/NavLinks.vue'
 import { isActive } from '../util'
 
 export default {

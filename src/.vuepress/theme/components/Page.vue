@@ -2,7 +2,7 @@
   <div class="page">
     <slot name="top"/>
 
-    <Content :custom="false"/>
+    <Content />
 
     <div class="page-edit">
       <div
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -177,6 +177,7 @@ function resolveNext (page, items) {
 }
 
 function find (page, items, offset) {
+  console.log(page)
   const res = []
   items.forEach(item => {
     if (item.type === 'group') {
@@ -195,8 +196,8 @@ function find (page, items, offset) {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
-@require './styles/wrapper.styl'
+@import '../styles/config.styl'
+@require '../styles/wrapper.styl'
 
 .page
   padding-bottom 2rem

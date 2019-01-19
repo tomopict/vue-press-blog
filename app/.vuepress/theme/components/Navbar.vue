@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import SidebarButton from './SidebarButton.vue'
+import SidebarButton from '../components/SidebarButton.vue'
 import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from '@SearchBox'
-import NavLinks from './NavLinks.vue'
+import NavLinks from '../components/NavLinks.vue'
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },

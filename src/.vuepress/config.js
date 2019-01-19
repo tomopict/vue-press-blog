@@ -1,5 +1,7 @@
 module.exports = {
   title: 'tomo blog',
+  base: '/',
+  serviceWorker: false,
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
     ['meta',{ name:"keywords", content:"key, words, vuepress"}],
@@ -28,10 +30,11 @@ module.exports = {
   ],
   themeConfig: {
     nav: [
-      {type: 'link', text: 'Home', link: '/' },
+      {type: 'link', text: 'about', link: '/about/' },
       {type: 'link', text: 'twitter', link: 'https://twitter.com/tomopict' },
       {type: 'link', text: 'github', link: 'https://github.com/tomopict' }
     ],
+    lastUpdated: true,
     sidebar: [
       {
         title: 'Blog',

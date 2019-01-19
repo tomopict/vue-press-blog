@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
+@import '../styles/config.styl'
 
 .home
   padding $navbarHeight 2rem 0
