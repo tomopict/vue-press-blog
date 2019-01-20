@@ -2,12 +2,8 @@
   <LayoutWrapper>
     <div class="page">
       <div class="content default">
-        <h2>カテゴリー一覧</h2>
-        <div>
-          <div v-for="(data, key) in $categories.map" :key="key">
-            <router-link :to="data.path">{{ key }}({{ data.posts.length }})</router-link>
-          </div>
-        </div>
+        <h2>タグ: {{ $route.meta.tagName }}の記事一覧</h2>
+        <Articles :pages="$tag.posts" prefix="/"/>
       </div>
     </div>
   </LayoutWrapper>
@@ -16,10 +12,7 @@
 <script>
 import LayoutWrapper from './LayoutWrapper.vue'
 export default {
-  components: { LayoutWrapper },
-  mounted () {
-    console.log('aaa')
-  }
+  components: { LayoutWrapper }
 }
 </script>
 

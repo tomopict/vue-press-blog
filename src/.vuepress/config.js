@@ -1,6 +1,9 @@
 module.exports = {
   title: 'tomo blog',
   base: '/',
+  postcss: {
+    plugins: [require('tailwindcss')('./tailwind.js'), require('autoprefixer')],
+  },
   serviceWorker: false,
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
@@ -13,7 +16,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'ja',
-      title: 'tomo blog',
+      title: 'tomopictのblog',
       description: 'VuePress Blog',
     }
   },
@@ -23,6 +26,8 @@ module.exports = {
       { ga: 'UA-131752322-1' }
     ],
     '@vuepress/blog',
+    require('./plugins/index.js'),
+    require('./plugins/comments.js')
   ],
   meta: [
     { charset: 'utf-8' },
@@ -39,8 +44,8 @@ module.exports = {
       {
         title: 'Blog',
         children: [
-          '/blog/20181231',
-          '/blog/20190105'
+          '/_posts/20181231',
+          '/_posts/20190105'
         ]
       }
     ]

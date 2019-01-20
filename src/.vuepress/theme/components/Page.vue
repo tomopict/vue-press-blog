@@ -2,12 +2,14 @@
   <div class="page">
     <slot name="top"/>
 
-    <Content />
+    <Content/>
 
-    <div class="page-edit">
+    <div 
+      class="page-edit"
+      v-if="editLink"
+    >
       <div
         class="edit-link"
-        v-if="editLink"
       >
         <a
           :href="editLink"
@@ -16,7 +18,6 @@
         >{{ editLinkText }}</a>
         <OutboundLink/>
       </div>
-
       <div
         class="last-updated"
         v-if="lastUpdated"
@@ -25,6 +26,8 @@
         <span class="time">{{ lastUpdated }}</span>
       </div>
     </div>
+
+    <slot name="bottom"/>
 
     <div class="page-nav" v-if="prev || next">
       <p class="inner">
@@ -56,8 +59,6 @@
         </span>
       </p>
     </div>
-
-    <slot name="bottom"/>
   </div>
 </template>
 
@@ -69,9 +70,7 @@ export default {
 
   computed: {
     lastUpdated () {
-      if (this.$page.lastUpdated) {
-        return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
-      }
+      return this.$page.lastUpdated
     },
 
     lastUpdatedText () {
@@ -84,26 +83,22 @@ export default {
       return 'Last Updated'
     },
 
+    sortedPosts () {
+      return this.$site.pages.filter(p => true || p.frontmatter.date).sort((a, b) => {
+        return (new Date(b.frontmatter.date)) - (new Date(a.frontmatter.date))
+      })
+    },
+
+    curIdx () {
+      return this.sortedPosts.findIndex(p => p.path === this.$route.path)
+    },
+
     prev () {
-      const prev = this.$page.frontmatter.prev
-      if (prev === false) {
-        return
-      } else if (prev) {
-        return resolvePage(this.$site.pages, prev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
-      }
+      return this.sortedPosts[this.curIdx - 1]
     },
 
     next () {
-      const next = this.$page.frontmatter.next
-      if (next === false) {
-        return
-      } else if (next) {
-        return resolvePage(this.$site.pages, next, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
-      }
+      return this.sortedPosts[this.curIdx + 1]
     },
 
     editLink () {
@@ -177,7 +172,6 @@ function resolveNext (page, items) {
 }
 
 function find (page, items, offset) {
-  console.log(page)
   const res = []
   items.forEach(item => {
     if (item.type === 'group') {
@@ -188,7 +182,7 @@ function find (page, items, offset) {
   })
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
       return res[i + offset]
     }
   }
@@ -196,7 +190,6 @@ function find (page, items, offset) {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
 @require '../styles/wrapper.styl'
 
 .page
