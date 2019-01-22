@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'tomo blog',
+  title: 'tomopictのblog',
   base: '/',
   postcss: {
     plugins: [require('tailwindcss')('./tailwind.js'), require('autoprefixer')],
@@ -7,11 +7,12 @@ module.exports = {
   serviceWorker: false,
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
-    ['meta',{ name:"keywords", content:"key, words, vuepress"}],
-    ['meta',{ name:"og:title", content:"og title"}],
-    ['meta',{ name:"og:description", content:"description"}],
+    ['meta',{ name:"keywords", content:"tech, vue"}],
+    ['meta',{ name:"og:title", content:"tomopictのblog"}],
+    ['meta',{ name:"og:description", content:"技術関連を中心に書いていくblogです"}],
     ['meta',{ name:"og:type", content:"website"}],
-    ['meta',{ name:"og:url", content:"og　url"}]
+    ['meta',{ name:"og:image", content:"image/jpg"}],
+    ['meta',{ name:"og:url", content:"https://tomopict.netlify.com/"}]
   ],
   locales: {
     '/': {
