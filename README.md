@@ -9,15 +9,18 @@ node 8.11.2
 yarn 1.10.1  
 npm 6.4.1
 
-## Install
-```
-yarn add -D vuepress # OR npm install -D vuepress
-```
-
 ## Usage
 ```
-npm run dev
-npm run build
+<!-- run local host -->
+$ yarn dev
+
+<!-- build app -->
+$ yarn build
+```
+
+## Install
+```
+$ yarn install
 ```
 
 ## Author
