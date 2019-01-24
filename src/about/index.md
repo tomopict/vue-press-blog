@@ -6,7 +6,7 @@ exclude: true
 ### Profile
 - 名前 : tomopict
 - 職業 : フロントエンドエンジニア
-- 言語 : HTML,CSS.Javascript,PHP
+- 言語 : HTML,CSS,Javascript,PHP
 - FW : Vue.js, Nuxt.js
 - GitHub : [tomopict](https://github.com/tomopict)
 - Twitter : [tomopict](https://twitter.com/tomopict?lang=ja)
@@ -39,6 +39,6 @@ exclude: true
 
 ### 趣味
 
-一時期はバンドをしていた。
-絵を描くことも好き。
-最近はチャリに乗っていることが多い。
+一時期はバンドをしていた。  
+絵を描くことも好き。  
+最近はチャリに乗っていることが多い。  
