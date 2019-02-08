@@ -75,8 +75,7 @@ export default {
         return false
       }
       return (
-        this.$title ||
-        themeConfig.logo ||
+        this.$title || themeConfig.logo ||
         themeConfig.repo ||
         themeConfig.nav ||
         this.$themeLocaleConfig.nav
