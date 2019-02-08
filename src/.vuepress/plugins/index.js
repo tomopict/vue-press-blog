@@ -1,9 +1,6 @@
 const { getPermalink } = require('@vuepress/shared-utils')
 const path = require('path')
 
-import LogRocket from 'logrocket'
-LogRocket.init('krouzz/blog-tomopic')
-
 module.exports = (options, ctx) => {
   let md
   return {
