@@ -9,7 +9,7 @@
         name="page-bottom"
         slot="bottom"
       >
-        <share-buttons />
+        <!-- <share-buttons /> -->
       </slot>
     </Article>
   </LayoutWrapper>

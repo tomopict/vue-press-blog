@@ -1,8 +1,12 @@
 <template>
   <div v-if="$page.frontmatter.date">
     <div class="date-container">
-      <div class="published-date"><i class="far fa-calendar"></i>{{ publishedDate }}</div>
-      <div class="updated-date"><i class="fas fa-sync"></i>{{ updatedDate }}</div>
+      <div class="published-date">
+        <i class="far fa-calendar"></i>{{ publishedDate }}
+        </div>
+      <div class="updated-date">
+        <i class="fas fa-sync"></i>{{ updatedDate }}
+      </div>
     </div>
     <div class="article-category-container">
       <i class="fas fa-tags"></i>

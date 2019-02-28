@@ -7,6 +7,10 @@ module.exports = {
   serviceWorker: false,
   head: [
     ['link', { rel: 'icon', type: 'image/jpg', href: '/favicon.jpg' }],
+    ['link', {
+      href: 'https://use.fontawesome.com/releases/v5.6.1/css/all.css',
+      rel: 'stylesheet'
+    }],
     ['meta',{ name:"keywords", content:"tech, vue"}],
     ['meta',{ name:"og:title", content:"tomopictのblog"}],
     ['meta',{ name:"og:description", content:"技術関連を中心に書いていくblogです"}],
@@ -47,6 +51,7 @@ module.exports = {
         children: [
           '/_posts/20181231',
           '/_posts/20190105'
+          // '/_posts/20190225'
         ]
       }
     ]

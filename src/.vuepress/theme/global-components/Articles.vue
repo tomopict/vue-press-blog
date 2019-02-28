@@ -10,15 +10,25 @@
           <i class="far fa-calendar calendar-icon"></i>
           {{ page.frontmatter.date.slice(0, 10) }}
         </div>
-        <div class="tag-container">
-          <i class="fas fa-tags tag-icon"></i>
+        <div class="tag-container" v-if="page.frontmatter.categories">
+          <i class="fas fa-xs fa-list-alt tag-icon"></i>
           <router-link
             v-for="c in page.frontmatter.categories"
             tag="div"
             :key="c"
             :to="'/category/' + c + '.html'"
-            class="tag"
+            class="category"
           >{{c}}</router-link>
+        </div>
+        <div class="tag-container"  v-if="page.frontmatter.tags">
+          <i class="fas fa-tags fa-xs tag-icon"></i>
+          <router-link
+            v-for="t in page.frontmatter.tags"
+            tag="div"
+            :key="t"
+            :to="'/tag/' + t + '.html'"
+            class="tag"
+          >{{t}}</router-link>
         </div>
         <div
           v-if="page.frontmatter.description"
@@ -73,6 +83,7 @@ export default {
 
 .tag-container {
   display: flex;
+  align-items: center;
 }
 
 .tag {
@@ -92,4 +103,14 @@ export default {
 .article-description {
   margin-top: 6px;
 }
+
+.category {
+  margin-right: 0.6em;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.6em;
+  cursor: pointer;
+  background-color: #efefef;
+}
+
 </style>

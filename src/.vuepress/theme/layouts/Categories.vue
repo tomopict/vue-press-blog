@@ -18,7 +18,7 @@ import LayoutWrapper from './LayoutWrapper.vue'
 export default {
   components: { LayoutWrapper },
   mounted () {
-    console.log('aaa')
+    console.log($categories)
   }
 }
 </script>
