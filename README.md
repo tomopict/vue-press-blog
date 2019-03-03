@@ -11,10 +11,8 @@ npm 6.4.1
 
 ## Usage
 ```
-<!-- run local host -->
 $ yarn dev
 
-<!-- build app -->
 $ yarn build
 ```
 
