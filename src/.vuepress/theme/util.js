@@ -117,57 +117,57 @@ function resolvePath (relative, base, append) {
  * @param { string } localePath
  * @returns { SidebarGroup }
  */
-// export function resolveSidebarItems (page, regularPath, site, localePath) {
-//   const { pages, themeConfig } = site
+export function resolveSidebarItems (page, regularPath, site, localePath) {
+  const { pages, themeConfig } = site
 
-//   const localeConfig = localePath && themeConfig.locales
-//     ? themeConfig.locales[localePath] || themeConfig
-//     : themeConfig
+  const localeConfig = localePath && themeConfig.locales
+    ? themeConfig.locales[localePath] || themeConfig
+    : themeConfig
 
-//   const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
-//   if (pageSidebarConfig === 'auto') {
-//     return resolveHeaders(page)
-//   }
+  const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
+  if (pageSidebarConfig === 'auto') {
+    return resolveHeaders(page)
+  }
 
-//   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
-//   if (!sidebarConfig) {
-//     return []
-//   } else {
-//     const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
-//     return config
-//       ? config.map(item => resolveItem(item, pages, base))
-//       : []
-//   }
-// }
-export function resolveSidebarItems (page, route, site, localePath) {
-  let pages = site.pages
-  const list = []
-  pages.forEach(pa => {
-    let pathList = pa.path.split('/').filter(p => p !== '')
-    if (pathList.length > 2) {
-      pathList = pathList.slice(0, 2)
-    }
-    let tmp = list
-    let nowPath = ''
-    let now
-    pathList.forEach((name, i) => {
-      nowPath = nowPath + '/' + name
-      now = tmp.find(e => e.path === nowPath + '/')
-      if (!now) {
-        tmp.push({
-          type: (i===1?'auto':'group'),
-          title: name,
-          path: (nowPath + '/'),
-          collapsable: true,
-          children: []
-        })
-        now = tmp.find(e => e.path === nowPath+'/')
-      } 
-      tmp = now.children
-    })
-  })
-  return [page, ...list]
+  const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+  if (!sidebarConfig) {
+    return []
+  } else {
+    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
+    return config
+      ? config.map(item => resolveItem(item, pages, base))
+      : []
+  }
 }
+// export function resolveSidebarItems (page, route, site, localePath) {
+//   let pages = site.pages
+//   const list = []
+//   pages.forEach(pa => {
+//     let pathList = pa.path.split('/').filter(p => p !== '')
+//     if (pathList.length > 2) {
+//       pathList = pathList.slice(0, 2)
+//     }
+//     let tmp = list
+//     let nowPath = ''
+//     let now
+//     pathList.forEach((name, i) => {
+//       nowPath = nowPath + '/' + name
+//       now = tmp.find(e => e.path === nowPath + '/')
+//       if (!now) {
+//         tmp.push({
+//           type: (i===1?'auto':'group'),
+//           title: name,
+//           path: (nowPath + '/'),
+//           collapsable: true,
+//           children: []
+//         })
+//         now = tmp.find(e => e.path === nowPath+'/')
+//       } 
+//       tmp = now.children
+//     })
+//   })
+//   return [page, ...list]
+// }
 
 /**
  * @param { Page } page

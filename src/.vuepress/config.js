@@ -50,7 +50,8 @@ module.exports = {
         title: 'Blog',
         children: [
           '/_posts/20181231',
-          '/_posts/20190105'
+          '/_posts/20190105',
+          '/_posts/20190303'
           // '/_posts/20190225'
         ]
       }
