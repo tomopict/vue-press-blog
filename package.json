@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@vuepress/plugin-blog": "^1.0.0-alpha.0",
-    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.42",
     "node-sass": "^4.11.0",
     "pug": "^2.0.3",
     "sass-loader": "^7.1.0",
