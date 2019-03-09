@@ -13,12 +13,15 @@ export function resolveSidebarItems (page, route, site, localePath) {
     let nowPath = ''
     let now
     pathList.forEach((name, i) => {
+      if (name.match(/\d{2,4}/)) {
+        return
+      }
       nowPath = nowPath + '/' + name
       now = tmp.find(e => e.path === nowPath + '/')
       if (!now) {
         tmp.push({
           type: (i===1?'auto':'group'),
-          title: name,
+          title: name.replace('.html', ''),
           path: (nowPath + '/'),
           collapsable: true,
           children: []
