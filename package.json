@@ -6,7 +6,7 @@
     "pug": "^2.0.3",
     "sass-loader": "^7.1.0",
     "tailwindcss": "^0.7.4",
-    "vuepress": "^1.0.0-alpha.39"
+    "vuepress": "^1.0.0-alpha.47"
   },
   "scripts": {
     "dev": "vuepress dev src",

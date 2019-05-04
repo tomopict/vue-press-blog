@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import LayoutWrapper from './LayoutWrapper.vue'
+import LayoutWrapper from "./LayoutWrapper.vue";
 export default {
   components: { LayoutWrapper },
-  mounted () {
-    console.log($categories)
+  mounted() {
+    console.log($categories);
   }
-}
+};
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
