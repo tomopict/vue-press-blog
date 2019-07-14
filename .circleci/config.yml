@@ -26,7 +26,7 @@ jobs:
       - run:
           name: vuepress deploy
           command: |
-            curl -X POST --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"coverage report: <https://$CIRCLE_BUILD_NUM-00000000-gh.circle-artifacts.com/0$CIRCLE_ARTIFACTS/coverage/report.html\" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"coverage report: https://${CIRCLE_BUILD_NUM}-161642287-gh.circle-artifacts.com/0${CIRCLE_ARTIFACTS}report.html" }' ${SLACK_WEB_HOOK}
 workflows:
   version: 2
   build_and_test:
