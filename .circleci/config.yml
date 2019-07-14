@@ -1,15 +1,15 @@
 version: 2
 jobs:
-build:
-docker:
-  - image: circleci/node:12
-steps:
-  - checkout
-  - run: echo "A first hello"
-  - run:
-      name: Install lighthouse
-      command: |
-        sudo npm install -g lighthouse
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run:
+          name: Install lighthouse
+          command: |
+            sudo npm install -g lighthouse
   # - run:
   #     name: Check lighthouse
   #     command: |
@@ -20,3 +20,8 @@ steps:
   #       lighthouse https://tomopict.netlify.com/ --save-assets
   # - store_artifacts:
   #     path: '.'
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
