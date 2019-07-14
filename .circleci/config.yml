@@ -27,7 +27,7 @@ jobs:
       - run:
           name: vuepress deploy
           command: |
-            curl -X POST "https://hooks.slack.com/services/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" \ --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"masterをデプロイしました。\" }"'
+            curl POST https://hooks.slack.com/services/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 --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"masterをデプロイしました。\" }"'
             
 workflows:
   version: 2
