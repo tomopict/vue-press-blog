@@ -25,12 +25,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: vuepress deploy
-        command: |
-          curl -X POST --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"masterをデプロイしました。\" }' ${SLACK_WEB_HOOK}
+          name: vuepress deploy
+          command: |
+            curl -X POST --data-urlencode 'payload={ \"username\": \"circleCI\", \"text\": \"masterをデプロイしました。\" }' ${SLACK_WEB_HOOK}
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      - slack
+      - slack:
+        requires:
+          - build
