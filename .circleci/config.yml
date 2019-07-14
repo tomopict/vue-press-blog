@@ -23,7 +23,6 @@ jobs:
     docker:
       - image: circleci/php:7.3.7-cli-browsers
     steps:
-      - checkout
       - run:
           name: vuepress deploy
           command: |
@@ -34,4 +33,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - slack
+      - slack:
+        requires:
+          - build
