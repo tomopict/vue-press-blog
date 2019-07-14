@@ -10,18 +10,20 @@ jobs:
           name: Install lighthouse
           command: |
             sudo npm install -g lighthouse
-  # - run:
-  #     name: Check lighthouse
-  #     command: |
-  #       lighthouse --version
-  # - run:
-  #     name: Run lighthouse
-  #     command: |
-  #       lighthouse https://tomopict.netlify.com/ --save-assets
-  # - store_artifacts:
-  #     path: '.'
+  test:
+    - run:
+        name: Check lighthouse
+        command: |
+          lighthouse --version
+    - run:
+        name: Run lighthouse
+        command: |
+          lighthouse https://tomopict.netlify.com/ --save-assets
+    - store_artifacts:
+        path: '.'
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - test
