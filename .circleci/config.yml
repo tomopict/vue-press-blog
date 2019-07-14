@@ -26,7 +26,7 @@ jobs:
       - run:
             name: enviroment test
             command: |
-              echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> $BASH_ENV
+              echo "test"
       - run:
           name: vuepress deploy
           command: |
