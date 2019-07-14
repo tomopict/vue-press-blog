@@ -37,6 +37,3 @@ workflows:
       - slack:
         requires:
           - build
-        filters:
-          branches:
-            only: master
