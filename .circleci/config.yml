@@ -24,6 +24,10 @@ jobs:
       - image: circleci/php:7.3.7-cli-browsers
     steps:
       - run:
+            name: enviroment test
+            command: |
+              echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> $BASH_ENV
+      - run:
           name: vuepress deploy
           command: |
             curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "デプロイしました<https://${CIRCLE_BUILD_NUM}-00000000-gh.circle-artifacts.com/0${CIRCLE_ARTIFACTS}/coverage/index.html|open report :earth_asia: >"}' ${SLACK_WEB_HOOK}
