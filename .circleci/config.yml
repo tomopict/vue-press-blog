@@ -27,9 +27,7 @@ jobs:
       - run:
           name: vuepress deploy
           command: |
-            curl -X POST \
-            $SLACK_WEB_HOOK \
-            "text": "Build started!"
+            curl -X POST --data-urlencode "payload={\"username\": \"circleCI\",\"text\": \"masterをデプロイしました。\", \"icon_emoji\": \":ghost:\" }" "${SLACK_WEB_HOOK}"
 workflows:
   version: 2
   build_and_test:
