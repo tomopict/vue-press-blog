@@ -26,7 +26,7 @@ jobs:
       - run:
             name: enviroment test
             command: |
-              echo "$SLACK_WEB_HOOK"
+              echo $SLACK_WEB_HOOK
       # - run:
       #     name: vuepress deploy
       #     command: |
