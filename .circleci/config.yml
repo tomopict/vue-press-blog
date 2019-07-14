@@ -4,12 +4,7 @@ jobs:
     docker:
       - image: circleci/node:12-browsers
     steps:
-      # - run:
-      #       name: Update ChromeDriver Version
-      #       command: |
-      #         CHROME_VERSION=$(google-chrome --version | sed -r 's/[^0-9]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')
-      #         CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-      #         bundle exec chromedriver-update $CHROMEDRIVER_VERSION
+      - checkout
       - run:
           name: Install lighthouse
           command: |
@@ -24,9 +19,24 @@ jobs:
             lighthouse https://tomopict.netlify.com/ --save-assets
       - store_artifacts:
           path: '.'
+  slack:
+     docker:
+      - image:  circleci/php:7.1.8-browsers
+    steps:
+      - checkout
+      - run:
+          name: vuepress deploy
+          command: |
+            curl -X POST --data-urlencode "payload={\"username\": \"circleCI\",\"text\": \"masterをデプロイしました。\", \"icon_emoji\": \":ghost:\" }" "${SLACK_WEB_HOOK}"
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - slack
+        requires:
+          - build
+        filters:
+          branches:
+            only: master
