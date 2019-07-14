@@ -1,22 +1,20 @@
 version: 2
 jobs:
-  one:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A first hello"
-      - run: sleep 25
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - run: sleep 15
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      - two
+build:
+docker:
+  - image: circleci/node:12.0.0
+steps:
+  - run:
+      name: Install lighthouse
+      command: |
+        sudo npm install -g lighthouse
+  - run:
+      name: Check lighthouse
+      command: |
+        lighthouse --version
+  - run:
+      name: Run lighthouse
+      command: |
+        lighthouse https://tomopict.netlify.com/ --save-assets
+  - store_artifacts:
+      path: '.'
