@@ -26,11 +26,12 @@ jobs:
       - run:
             name: enviroment test
             command: |
-              echo ${CIRCLE_BUILD_NUM} >> $var
+              echo ${CIRCLE_BUILD_NUM}
+              cidnum = ${CIRCLE_BUILD_NUM}
       - run:
           name: vuepress test
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "$BASH_ENV" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "${cidnum}" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
