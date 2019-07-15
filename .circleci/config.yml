@@ -17,7 +17,7 @@ jobs:
           name: Run lighthouse
           command: |
             # lighthouse https://tomopict.netlify.com/ --save-assets
-            lighthouse https://tomopict.netlify.com/ --output html --output json --output-path ./
+            lighthouse https://tomopict.netlify.com/ --output html --output json --output-path ./report.html
 
       - store_artifacts:
           path: '.'
