@@ -27,19 +27,19 @@ jobs:
             name: enviroment test
             command: |
               echo ${CIRCLE_BUILD_NUM}
-      - run:
-          name: vuepress test
-          command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "'${CIRCLE_BUILD_NUM}'" }' ${SLACK_WEB_HOOK}
+      # - run:
+      #     name: vuepress test
+      #     command: |
+      #       curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "'${CIRCLE_BUILD_NUM}'" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "デプロイしました<'https://${CIRCLE_BUILD_NUM}-161642287-gh.circle-artifacts.com/0/home/circleci/project/${myartifactname}'|open>" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "デプロイしました<'https://${CIRCLE_BUILD_NUM}-161642287-gh.circle-artifacts.com/0/home/circleci/project/tomopict.netlify.com_2019-07-14_23-38-45.report.html'|openlink :earth_asia:>" }' ${SLACK_WEB_HOOK}
 workflows:
   version: 2
   build_and_test:
     jobs:
-      # - build
-      - slack
-          # requires:
-          #   - build
+      - build
+      - slack:
+          requires:
+            - build
