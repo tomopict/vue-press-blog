@@ -30,7 +30,7 @@ jobs:
       - run:
           name: vuepress test
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "${CIRCLE_BUILD_NUM}" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "'${CIRCLE_BUILD_NUM}'" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
