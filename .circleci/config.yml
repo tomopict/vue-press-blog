@@ -27,6 +27,12 @@ jobs:
             name: enviroment test
             command: |
               echo ${CIRCLE_BUILD_NUM}
+              str1 = "Shell script"
+              str2 = "is intersting!"
+
+              str = $str1$str2
+
+              echo $str
       - run:
           name: vuepress test
           command: |
