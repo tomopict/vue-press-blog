@@ -24,14 +24,9 @@ jobs:
       - image: circleci/php:7.3.7-cli-browsers
     steps:
       - run:
-            name: enviroment test
-            command: |
-              echo ${CIRCLE_BUILD_NUM}
-              cidnum = ${CIRCLE_BUILD_NUM}
-      - run:
           name: vuepress test
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "${cidnum}" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "${CIRCLE_BUILD_NUM}" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
