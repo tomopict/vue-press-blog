@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12-browsers
+      - image: circleci/node:10.16-browsers
     steps:
       - checkout
       - run:
@@ -17,9 +17,9 @@ jobs:
           name: Run lighthouse
           command: |
             lighthouse https://tomopict.netlify.com/ --output html --output json --output-path ./tomopict.json
-
       - store_artifacts:
           path: '.'
+
       - run:
           name: vuepress deploy
           command: |
