@@ -26,7 +26,7 @@ jobs:
       - run:
             name: enviroment test
             command: |
-              echo ${CIRCLE_BUILD_NUM} >> $BASH_ENV
+              echo ${CIRCLE_BUILD_NUM} >> $var
       - run:
           name: vuepress test
           command: |
