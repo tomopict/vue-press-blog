@@ -18,7 +18,7 @@ jobs:
           command: |
             lighthouse https://tomopict.netlify.com/ --save-assets
       - store_artifacts:
-          path: /code/test-results
+          path: '/code/test-results'
           destination: prefix
 
   slack:
