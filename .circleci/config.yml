@@ -26,11 +26,15 @@ jobs:
       - run:
             name: enviroment test
             command: |
-              echo ${CIRCLE_BUILD_NUM}
+              echo ${CIRCLE_BUILD_NUM} >> $BASH_ENV
+      - run:
+          name: vuepress test
+          command: |
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "$BASH_ENV" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "{デプロイしました<https://${CIRCLE_BUILD_NUM}-00000000-gh.circle-artifacts.com/0${CIRCLE_ARTIFACTS}/coverage/index.html|open report>}" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "デプロイしました<https://${CIRCLE_BUILD_NUM}-00000000-gh.circle-artifacts.com/0${CIRCLE_ARTIFACTS}/coverage/index.html|open report>" }' ${SLACK_WEB_HOOK}
 workflows:
   version: 2
   build_and_test:
