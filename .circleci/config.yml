@@ -19,7 +19,10 @@ jobs:
             lighthouse https://tomopict.netlify.com/ --save-assets
       - store_artifacts:
           path: '.'
-          destination: prefix
+      - run:
+          name: vuepress deploy
+          command: |
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "デプロイしました<'https://${CIRCLE_BUILD_NUM}-161642287-gh.circle-artifacts.com/0/home/circleci/project/tomopict.netlify.com_2019-07-14_23-38-45.report.html'|openlink :earth_asia:>" }' ${SLACK_WEB_HOOK}
 
   slack:
     docker:
