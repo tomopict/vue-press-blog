@@ -27,16 +27,10 @@ jobs:
             name: enviroment test
             command: |
               echo ${CIRCLE_BUILD_NUM}
-              str1 = "Shell script"
-              str2 = "is intersting!"
-
-              str = $str1$str2
-
-              echo $str
       - run:
           name: vuepress test
           command: |
-            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "$CIRCLE_BUILD_NUM" }' ${SLACK_WEB_HOOK}
+            curl -X POST --data-urlencode 'payload={"username": "circleCI", "text": "${CIRCLE_BUILD_NUM}" }' ${SLACK_WEB_HOOK}
       - run:
           name: vuepress deploy
           command: |
