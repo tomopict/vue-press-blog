@@ -18,7 +18,9 @@ jobs:
           command: |
             lighthouse https://tomopict.netlify.com/ --save-assets
       - store_artifacts:
-          path: '.'
+          path: /code/test-results
+          destination: prefix
+
   slack:
     docker:
       - image: circleci/php:7.3.7-cli-browsers
