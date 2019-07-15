@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.16 # Ligthouse v5 以上の場合 node > v10必須
+      - image: circleci/node:10.16-browsers # Ligthouse v5 以上の場合 node > v10必須
     steps:
       - checkout # コード実行場所(working_directory)にcheckout
       - run:
