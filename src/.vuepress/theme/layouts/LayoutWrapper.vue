@@ -48,6 +48,13 @@ export default {
     };
   },
   created() {
+  Sentry.configureScope((scope) => {
+    scope.setTag("test-tag", "test-value");
+    scope.setUser({
+      id: 42,
+      email: "john.doe@example.com"
+    });
+  });
     Sentry.captureException(new Error("Something broke"));
   },
   computed: {
