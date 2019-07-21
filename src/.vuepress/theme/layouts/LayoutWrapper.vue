@@ -32,6 +32,11 @@ import * as Integrations from '@sentry/integrations';
 Sentry.init({
   dsn: 'https://b360938dff664cdf9166f2d92f1f5976@sentry.io/1509828',
   integrations: [new Integrations.Vue({Vue, attachProps: true})],
+  beforeSend: (event) => {
+    // Check if it is an exception -> Show report dialog
+    event.exception && Sentry.showReportDialog()
+    return event
+  }
 });
 
 export default {
