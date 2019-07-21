@@ -13,6 +13,8 @@
     "build": "vuepress build src"
   },
   "dependencies": {
+    "@sentry/browser": "^5.5.0",
+    "@sentry/integrations": "^5.5.0",
     "logrocket": "^0.6.19"
   }
 }

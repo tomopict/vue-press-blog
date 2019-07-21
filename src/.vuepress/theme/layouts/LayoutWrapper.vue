@@ -26,6 +26,14 @@ import Navbar from "../components/Navbar.vue";
 import Page from "../components/Page.vue";
 import Sidebar from "../components/Sidebar.vue";
 import { resolveSidebarItems } from "../../custom/util";
+
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
+Sentry.init({
+  dsn: 'https://b360938dff664cdf9166f2d92f1f5976@sentry.io/1509828',
+  integrations: [new Integrations.Vue({Vue, attachProps: true})],
+});
+
 export default {
   name: "Layout",
   components: { Home, Content: Page, Sidebar, Navbar },
