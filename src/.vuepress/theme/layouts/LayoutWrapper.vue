@@ -47,6 +47,9 @@ export default {
       isSidebarOpen: false
     };
   },
+  created() {
+    Sentry.captureException(new Error("Something broke"));
+  },
   computed: {
     shouldShowNavbar() {
       const { themeConfig } = this.$site;
