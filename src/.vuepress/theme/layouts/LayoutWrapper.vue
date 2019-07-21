@@ -32,11 +32,11 @@ import * as Integrations from '@sentry/integrations';
 Sentry.init({
   dsn: 'https://b360938dff664cdf9166f2d92f1f5976@sentry.io/1509828',
   integrations: [new Integrations.Vue({Vue, attachProps: true})],
-  beforeSend: (event) => {
-    // Check if it is an exception -> Show report dialog
-    event.exception && Sentry.showReportDialog()
-    return event
-  }
+  // beforeSend: (event) => {
+  //   // Check if it is an exception -> Show report dialog
+  //   event.exception && Sentry.showReportDialog()
+  //   return event
+  // }
 });
 
 export default {
@@ -48,14 +48,14 @@ export default {
     };
   },
   created() {
-  Sentry.configureScope((scope) => {
-    scope.setTag("test-tag", "test-value");
-    scope.setUser({
-      id: 42,
-      email: "john.doe@example.com"
-    });
-  });
-    Sentry.captureException(new Error("Something broke"));
+    // Sentry.configureScope((scope) => {
+    //   scope.setTag("test-tag", "test-value");
+    //   scope.setUser({
+    //     id: 42,
+    //     email: "john.doe@example.com"
+    //   });
+    // });
+    // Sentry.captureException(new Error("Something broke"));
   },
   computed: {
     shouldShowNavbar() {
